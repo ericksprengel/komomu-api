@@ -3,6 +3,6 @@ Rabl.configure do |config|
 end
 object @community
 
-attributes :id, :name, :image, :description, :user_id, :created_at
-child(:posts) { attributes :id, :url, :description, :title, :created_at, :image, :user_id }
+attributes :id, :name, :image, :description, :user_id, :likes, :user_liked, :created_at
+child(:posts) { attributes :id, :url, :description, :title, :created_at, :image, :user_id, :relevance, :likes }
 

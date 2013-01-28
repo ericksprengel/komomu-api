@@ -1,10 +1,16 @@
 KomomuApi::Application.routes.draw do
   
-  
   namespace :api do
     resource :session, only: [:create, :destroy]
-    resources :communities, only: [:create, :index, :show]
-    resources :posts, only: [:create, :index]
+    resources :communities, only: [:create, :index, :show] do
+      resources :user_likes_communities, :path => 'like', only: [:create]
+    end
+    resources :posts, only: [:create, :index, :show] do
+      resources :user_likes_posts, :path => 'like', only: [:create]
+    end
+    resources :comments, only: [:create] do
+      resources :user_likes_comments, :path => 'like', only: [:create]
+    end
   end
 
   # The priority is based upon order of creation:

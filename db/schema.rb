@@ -11,13 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120929005955) do
+ActiveRecord::Schema.define(:version => 20121209125445) do
+
+  create_table "comments", :force => true do |t|
+    t.string   "text"
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.integer  "likes"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "communities", :force => true do |t|
     t.string   "name"
     t.string   "image"
     t.string   "description"
     t.integer  "user_id"
+    t.integer  "likes"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -29,8 +39,33 @@ ActiveRecord::Schema.define(:version => 20120929005955) do
     t.string   "image"
     t.integer  "user_id"
     t.integer  "community_id"
+    t.integer  "likes"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+  end
+
+  create_table "user_likes_comments", :force => true do |t|
+    t.integer  "value"
+    t.integer  "user_id"
+    t.integer  "comment_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "user_likes_communities", :force => true do |t|
+    t.integer  "value"
+    t.integer  "user_id"
+    t.integer  "community_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "user_likes_posts", :force => true do |t|
+    t.integer  "value"
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

@@ -1,3 +1,3 @@
-collection @posts
-  attributes :id, :description, :image, :title, :url, :user_id, :community_id, :created_at
-end
+collection @posts, root: "posts", object_root: false
+attributes :id, :description, :image, :title, :url, :user_id, :community_id, :likes, :relevance, :created_at
+

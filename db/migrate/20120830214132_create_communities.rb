@@ -5,6 +5,7 @@ class CreateCommunities < ActiveRecord::Migration
       t.string :image
       t.string :description
       t.integer :user_id
+      t.integer :likes
 
       t.timestamps
     end
