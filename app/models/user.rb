@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
     
     has_many :communities, order: 'created_at desc'
     has_many :posts, :dependent => :destroy, order: 'created_at desc'
+    has_many :comments, :dependent => :destroy, order: 'created_at desc'
     has_many :user_likes_communities, :dependent => :destroy, order: 'created_at desc'
     has_many :user_likes_posts, :dependent => :destroy, order: 'created_at desc'
     has_many :user_likes_comments, :dependent => :destroy, order: 'created_at desc'
