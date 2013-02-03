@@ -1,6 +1,8 @@
 KomomuApi::Application.routes.draw do
   
   namespace :api do
+    
+    resource :users, only: [:show]
     resource :session, only: [:create, :destroy]
     resources :communities, only: [:create, :index, :show] do
       resources :user_likes_communities, :path => 'like', only: [:create]
